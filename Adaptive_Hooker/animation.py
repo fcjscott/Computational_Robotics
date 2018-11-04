@@ -18,8 +18,8 @@ def animation(x, theta_b):
     offset = -np.pi/2 - np.arctan(width/length)
 
     # define balance beam
-    length_b = 5
-    width_b = 15
+    length_b = 3
+    width_b = 20
     dl_b = 0.5 * np.sqrt(length_b**2 + width_b**2)
     offset_b = - np.pi/2 - np.arctan(length_b/width_b)
 

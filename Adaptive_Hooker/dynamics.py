@@ -1,12 +1,12 @@
 from animation import animation
 from utility import *
 
-x = [(10, 10, 20), (10, 10, 25), (10, 10, 30)]
-t = [10, 20, 30]
+x = [(10, 10, 20), (11, 11, 18), (12, 12, 16), (13, 13, 14), (14, 14, 12)]
+t = [10, 20, 25, 20, 15]
 
 
 class MyController:
-    def __init__(self, u = (3, 3), block_mass = 1, beam_mass = 1, initial_state = (10, 10, 0), target_state = (20, 20, 0)):
+    def __init__(self, u=(3, 3), block_mass = 1, beam_mass = 1, initial_state = (10, 10, 0), target_state = (20, 20, 0)):
         """
 
         :param u: 2 member list style input variable contains [velocity, direction]
@@ -24,7 +24,7 @@ class MyController:
     def dynamics(self):
         self.T = int(self.xf[0]/self.u[0])
         time = np.arange(0, self.T, self.dt)
-        pos = (,)
+        pos = (0, 0)
         for t in time:
             pos = 0.5 * self.a * t**2 + self.u * t
             self.traj.append(pos[0], pos[1], 0)
@@ -32,8 +32,8 @@ class MyController:
         return self.traj
 
 
-A = MyController()
-traj = A.dynamics()
+animation(x, t)
+
 
 
 
