@@ -28,7 +28,7 @@ def animation(x, theta_b, target_point):
 
 
     # define lower left corner point of block
-    angle_patch = x[0][2]
+    angle_patch = np.rad2deg(x[0][2])
     angle_i = np.deg2rad(angle_patch)
     pos_i = (x[0][0], x[0][1])
     ri = (dl * np.cos(offset + angle_i), dl * np.sin(offset + angle_i))
@@ -91,8 +91,8 @@ def animation(x, theta_b, target_point):
         pos = (x[i][0], x[i][1])
 
         # update on block
-        angle = np.deg2rad(x[i][2])
-        patch.angle = x[i][2]
+        angle = x[i][2]
+        patch.angle = np.rad2deg(x[i][2])
 
         # converting center to lower left corner for block
         r = (dl * np.cos(offset + angle), dl * np.sin(offset + angle))
@@ -100,8 +100,8 @@ def animation(x, theta_b, target_point):
         patch.xy = p
 
         # update on beam
-        angle_b = np.deg2rad(theta_b[i]) + angle
-        beam.angle = theta_b[i] + patch.angle
+        angle_b = theta_b[i] + angle
+        beam.angle = np.rad2deg(theta_b[i]) + patch.angle
 
         # converting center to lower left corner for beam
         rb = (dl_b * np.cos(offset_b + angle_b), dl_b * np.sin(offset_b + angle_b))
