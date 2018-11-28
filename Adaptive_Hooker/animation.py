@@ -21,8 +21,8 @@ def animation(x, theta_b, target_point):
 
 
     # define balance beam
-    length_b = 1
-    width_b = 15
+    length_b = 3
+    width_b = 6
     dl_b = 0.5 * np.sqrt(length_b**2 + width_b**2)
     offset_b = - np.pi/2 - np.arctan(length_b/width_b)
 
@@ -58,7 +58,7 @@ def animation(x, theta_b, target_point):
     # initialize plot
     fig = plt.figure()
     fig.set_size_inches(7, 6.5)
-    ax = plt.axes(xlim=(-20, 100), ylim=(-20, 100))
+    ax = plt.axes(xlim=(-20, 150), ylim=(-20, 150))
     patch = mpatches.Rectangle(pi, length, width,angle_patch , fc='r')
     beam = mpatches.Rectangle(pbi, length_b, width_b, angle_beam, fc='y')
     Power_board = mpatches.Rectangle(p_powerboard, 12, 2, angle_patch, fc='b')
@@ -78,7 +78,6 @@ def animation(x, theta_b, target_point):
         ax.add_patch(Power_circle)
         ax.add_patch(target_circle)
         ax.add_line(line)
-        ax.add_patch(arc)
 
 
 
