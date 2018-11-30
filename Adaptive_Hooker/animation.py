@@ -126,7 +126,8 @@ def animation(x, theta_b, target_point):
         arc.set_fill(False)
         return patch, beam, line, arc
 
-    _ = FuncAnimation(fig, animate, init_func=init, frames=len(x), interval=20, blit=False)
+    _ = FuncAnimation(fig, animate, init_func=init, frames=len(x), interval=200, blit=False)
     plt.show()
+
 
 
