@@ -42,6 +42,13 @@ def animation(x, theta_b, target_point):
     ri = (dl * np.cos(offset + angle_i), dl * np.sin(offset + angle_i))
     pi = (pos_i[0] + ri[0], pos_i[1] + ri[1])
 
+    # define final state of block
+    angle_patch_f = np.rad2deg(target_point[2])
+    angle_f = np.deg2rad(angle_patch_f)
+    pos_f = (x[-1][0], x[-1][1])
+    rf = (dl * np.cos(offset + angle_f), dl * np.sin(offset + angle_f))
+    pf = (pos_f[0] + rf[0], pos_f[1] + rf[1])
+
     # define points of power board
 
     # p_powerboard = ( -(6-6*np.tan(angle_i)) * np.cos(angle_i) , -(6/np.cos(angle_i)+(6-6*np.tan(angle_i)) * np.sin(angle_i)))
@@ -78,11 +85,12 @@ def animation(x, theta_b, target_point):
 
     ax.grid(True)
 
-    patch = mpatches.Rectangle(pi, length, width,angle_patch , fc='r')
+    patch = mpatches.Rectangle(pi, length, width, angle_patch , fc='r')
     beam = mpatches.Rectangle(pbi, length_b, width_b, angle_beam, fc='y')
     Power_board = mpatches.Arrow(0, 0, 10*np.cos(angle_i), 10*np.sin(angle_i), width=10, fc='b')
     Power_circle = mpatches.Circle(p_powercircle,radius=2,color='b')
-    target_circle = mpatches.Circle(target_point, radius=2.0, color='green')
+    target_patch = mpatches.Rectangle(pf, length, width, angle_patch_f, edgecolor='g', fill=0)
+    target_circle = mpatches.Circle(xy=(target_point[0], target_point[1]), radius=1, fc='g')
     line = matplotlib.lines.Line2D(pos_line1,pos_line2,linewidth=2, color='k')
     Path = mpath.Path([pos_arc0,pos_arc1,pos_arc2], [1, 3, 3])
     arc = mpatches.PathPatch(Path)
@@ -95,9 +103,10 @@ def animation(x, theta_b, target_point):
         ax.add_patch(beam)
         ax.add_patch(Power_board)
         ax.add_patch(Power_circle)
-        ax.add_patch(target_circle)
+        ax.add_patch(target_patch)
         ax.add_line(line)
         ax.add_patch(center_pt)
+        ax.add_patch(target_circle)
 
 
 

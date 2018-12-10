@@ -3,7 +3,7 @@ from utility import *
 
 
 # global parameters
-N = 70
+N = 50
 tail_mass = 1
 tail_w = 0.05
 block_mass = 5
@@ -19,7 +19,7 @@ bx = (-100, 100)
 angle_bnd = (-np.pi, np.pi)
 vel_bnd = (0, 80)
 # Target
-goal_position = [100, 0]
+goal_state = [100, 40, 1.75*np.pi]
 
 
 # objective function
@@ -107,7 +107,7 @@ def constraint3(decision_variable):
 
     #final_state = np.concatenate(final_state, axis=None)
 
-    return np.concatenate((pos-goal_position, angle, omega), axis=None)
+    return np.concatenate((pos-goal_state[:-1], angle - goal_state[-1], omega), axis=None)
 
 
 def constraint4(decision_variable):
@@ -148,7 +148,7 @@ cons = ({'type': 'eq', 'fun': constraint1},
 # optimization process
 np.random.seed(8)
 x0 = np.asarray(np.random.rand(9*N+1,1))
-sol = opt.minimize(objective, x0, method='SLSQP',bounds=bnds, constraints=cons, options={'maxiter': 500})
+sol = opt.minimize(objective, x0, method='SLSQP',bounds=bnds, constraints=cons, options={'maxiter': 1000})
 print(sol)
 x = sol.x
 
@@ -201,5 +201,5 @@ for i in range(N):
     block_traj.append((pos_x[i], pos_y[i], theta_block[i]))
     tail_traj.append(theta_tail[i])
 
-animation(block_traj, tail_traj, goal_position)
+animation(block_traj, tail_traj, goal_state)
 
