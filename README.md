@@ -1,3 +1,2 @@
-# Computational_Robotics
-modern topics in robotics for tracking, localization, path planning and controls
+# Tail Assisted In-flight control with direct collocation
 ![](/Adaptive_Hooker/figures/time_consideration_animation.gif)
