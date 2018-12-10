@@ -45,12 +45,16 @@ class MyController:
         self.N = len(input_torque)
 
     def dynamics(self):
-        block_traj = [self.initial_state]
-        tail_traj = [self.tail_state[0]]
-        block_vel = []
-        tail_vel = []
+        #block_traj = [self.initial_state]
+        #tail_traj = [self.tail_state[0]]
+        #block_vel = [(40*np.cos(np.pi/3), 40*np.sin(np.pi/3),0)]
+        #tail_vel = [self.tail_state[1]]
+        block_traj = [ (0, 0, self.u[1])]
+        tail_traj = [(0)]
+        block_vel = [((self.u[0]*np.cos(self.u[1]), self.u[0]*np.sin(self.u[1]),0))]
+        tail_vel = [(0)]
         dt = self.T/self.N
-        time_line = np.arange(0, self.T, dt)
+        time_line = np.arange(dt, self.T, dt)
         step = 0
         for t in time_line:
 
@@ -65,7 +69,7 @@ class MyController:
 
             step += 1
 
-        return block_traj, tail_traj
+        return block_traj, block_vel, tail_traj, tail_vel
 
     def _update(self, step, dt):
         pos_x, vel_x, acc_x = self.block_state[0][0], self.block_state[0][1], self.block_state[0][2]
@@ -79,7 +83,7 @@ class MyController:
         omega_z += alpha_z * dt
         theta_z += omega_z * dt
 
-        alpha_t = - torque / I_t
+        alpha_t = -torque / I_t
         omega_t += alpha_t * dt
         theta_t += omega_t * dt
 

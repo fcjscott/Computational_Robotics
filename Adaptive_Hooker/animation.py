@@ -13,6 +13,14 @@ def animation(x, theta_b, target_point):
 
     :return: None
     """
+    # extract x position
+    xpos = []
+    ypos = []
+    for i in range(len(x)):
+        xpos.append(x[i][0])
+        ypos.append(x[i][1])
+
+
     # define block
     length = 8
     width = 8
@@ -36,8 +44,9 @@ def animation(x, theta_b, target_point):
 
     # define points of power board
 
-    p_powerboard = ( -(6-6*np.tan(angle_i)) * np.cos(angle_i) , -(6/np.cos(angle_i)+(6-6*np.tan(angle_i)) * np.sin(angle_i)))
-    p_powercircle = ( -(7-5*np.tan(angle_i)) * np.cos(angle_i) , -(5/np.cos(angle_i)+(7-5*np.tan(angle_i)) * np.sin(angle_i)))
+    # p_powerboard = ( -(6-6*np.tan(angle_i)) * np.cos(angle_i) , -(6/np.cos(angle_i)+(6-6*np.tan(angle_i)) * np.sin(angle_i)))
+    # p_powercircle = ( -(7-5*np.tan(angle_i)) * np.cos(angle_i) , -(5/np.cos(angle_i)+(7-5*np.tan(angle_i)) * np.sin(angle_i)))
+    p_powercircle = (0, 0)
 
     # define hook
 
@@ -55,15 +64,25 @@ def animation(x, theta_b, target_point):
     rbi = (dl_b * np.cos(offset_b + angle_bi), dl_b * np.sin(offset_b + angle_bi))
     pbi = (pos_i[0] + rbi[0], pos_i[1] + rbi[1])
 
+    # define block's center point
+    xb = x[0][0]
+    yb = x[0][1]
+    xc = (xb, yb)
+    center_pt = mpatches.Circle(xc, radius=1, color='yellow')
+
     # initialize plot
     fig = plt.figure()
-    fig.set_size_inches(7, 6.5)
-    ax = plt.axes(xlim=(-20, 150), ylim=(-20, 150))
+    fig.set_size_inches(14, 12)
+    ax = plt.axes(xlim=(-20, 150), ylim=(-20, 100))
+    plt.plot(xpos, ypos, '--')
+
+    ax.grid(True)
+
     patch = mpatches.Rectangle(pi, length, width,angle_patch , fc='r')
     beam = mpatches.Rectangle(pbi, length_b, width_b, angle_beam, fc='y')
-    Power_board = mpatches.Rectangle(p_powerboard, 12, 2, angle_patch, fc='b')
+    Power_board = mpatches.Arrow(0, 0, 10*np.cos(angle_i), 10*np.sin(angle_i), width=10, fc='b')
     Power_circle = mpatches.Circle(p_powercircle,radius=2,color='b')
-    target_circle = mpatches.Circle(target_point, radius=0.7, color='green')
+    target_circle = mpatches.Circle(target_point, radius=2.0, color='green')
     line = matplotlib.lines.Line2D(pos_line1,pos_line2,linewidth=2, color='k')
     Path = mpath.Path([pos_arc0,pos_arc1,pos_arc2], [1, 3, 3])
     arc = mpatches.PathPatch(Path)
@@ -78,6 +97,8 @@ def animation(x, theta_b, target_point):
         ax.add_patch(Power_circle)
         ax.add_patch(target_circle)
         ax.add_line(line)
+        ax.add_patch(center_pt)
+
 
 
 
@@ -89,9 +110,13 @@ def animation(x, theta_b, target_point):
         # universal center update
         pos = (x[i][0], x[i][1])
 
+        # update on center point
+        center_pt.xy = pos
+
         # update on block
         angle = x[i][2]
         patch.angle = np.rad2deg(x[i][2])
+
 
         # converting center to lower left corner for block
         r = (dl * np.cos(offset + angle), dl * np.sin(offset + angle))
@@ -120,13 +145,14 @@ def animation(x, theta_b, target_point):
 
         posi_arc2 = (x[i][0] - (0.5 * width + 3) * np.sin(angle), x[i][1] + (0.5 * width + 3) * np.cos(angle))
 
-        line.set_data(posi_line1,posi_line2)
+        line.set_data(posi_line1, posi_line2)
 
         arc._path = mpath.Path([posi_arc0, posi_arc1, posi_arc2], [1, 3, 3])
         arc.set_fill(False)
-        return patch, beam, line, arc
 
-    _ = FuncAnimation(fig, animate, init_func=init, frames=len(x), interval=200, blit=False)
+        return patch, beam, line, arc, center_pt
+
+    ani = FuncAnimation(fig, animate, init_func=init, frames=len(x), interval=1, blit=False)
     plt.show()
 
 
