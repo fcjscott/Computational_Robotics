@@ -3,7 +3,7 @@ from utility import *
 
 
 # global parameters
-N = 50
+N = 70
 tail_mass = 1
 tail_w = 0.05
 block_mass = 5
@@ -67,7 +67,7 @@ def constraint1(decision_variable):
     decision_variable_copy = decision_variable.copy()
     delta = []
     T = decision_variable_copy[-1]
-    time_line = np.arange(0.0, T, T/N, dtype='float32')
+    time_line = np.arange(0, T, T/N)
     for k in range(N-1):
         uk = decision_variable_copy[k]
         xk = decision_variable_copy[(8*k+N):(8*(k+1)+N)]
@@ -135,7 +135,7 @@ for i in range(9*N+1):
     elif i == N+4 or i == N+5:
         bnds.append(vel_bnd)
     elif i == 9*N:
-        bnds.append((0.01, 10))
+        bnds.append((0, 10))
     else:
         bnds.append(bx)
 
@@ -146,15 +146,9 @@ cons = ({'type': 'eq', 'fun': constraint1},
 {'type': 'eq', 'fun':constraint4})
 
 # optimization process
-# initial guess on decision variables
 np.random.seed(8)
-u0 = np.asarray(np.random.uniform(-0.127, 0.127, N))
-x0 = np.asarray(np.random.rand(8*N))
-T0 = 5
-
-X0 = np.concatenate((u0, x0, T0), axis=None)
-print(X0)
-sol = opt.minimize(objective, X0, method='SLSQP',bounds=bnds, constraints=cons, options={'maxiter': 500})
+x0 = np.asarray(np.random.rand(9*N+1,1))
+sol = opt.minimize(objective, x0, method='SLSQP',bounds=bnds, constraints=cons, options={'maxiter': 500})
 print(sol)
 x = sol.x
 
@@ -162,6 +156,7 @@ x = sol.x
 # Get output
 u = x[:N]
 pos_x = x[np.arange(N, 9*N, 8)]
+print(pos_x.shape)
 pos_y = x[np.arange(N+1, 9*N, 8)]
 theta_block = x[np.arange(N+2, 9*N, 8)]
 theta_tail = x[np.arange(N+3, 9*N, 8)]
@@ -174,8 +169,10 @@ omega_tail = x[np.arange(N+7, 9*N, 8)]
 fig, axs = plt.subplots(4, 2, figsize=(16, 8))
 fig.suptitle("State Trajectories")
 T = x[-1]
-print(T)
 t = np.arange(0, T, T/N)
+if len(t) > N:
+    t = t[:-1]
+print(t)
 axs[0][0].plot(t, pos_x)
 axs[0][0].set_ylabel('x(t)')
 axs[1][0].plot(t, pos_y)

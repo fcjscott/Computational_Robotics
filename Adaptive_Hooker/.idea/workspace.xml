@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="074a761a-0628-4587-8a34-245e8afa8545" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/50pts_1s.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/direct_collocation_inverse.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/direct_collocation_modified.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modified_50pts_1s.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/modified_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/time_50pts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Figure_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/animation.py" beforeDir="false" afterPath="$PROJECT_DIR$/animation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/direct_collocation.py" beforeDir="false" afterPath="$PROJECT_DIR$/direct_collocation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dynamics.py" beforeDir="false" afterPath="$PROJECT_DIR$/dynamics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/direct_collocation_modified.py" beforeDir="false" afterPath="$PROJECT_DIR$/direct_collocation_modified.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,26 +63,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="29" />
-          <entry key="py" value="12876" />
+          <entry key="Python Console" value="40" />
+          <entry key="py" value="13076" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="12905" />
+          <entry key="Python" value="13116" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gif" value="1" />
           <entry key="png" value="22" />
-          <entry key="py" value="51" />
+          <entry key="py" value="52" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="23" />
-          <entry key="Python" value="50" />
+          <entry key="Python" value="51" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
@@ -102,7 +93,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/animation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1929">
+            <state relative-caret-position="1178">
               <caret line="154" column="92" selection-start-line="154" selection-start-column="92" selection-end-line="154" selection-end-column="92" />
             </state>
           </provider>
@@ -111,8 +102,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/direct_collocation_modified.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+            <state relative-caret-position="240">
+              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -121,10 +112,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-894">
+              <caret line="22" column="73" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/time_50pts.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="834">
-              <caret line="269" column="52" lean-forward="true" selection-start-line="269" selection-start-column="52" selection-end-line="269" selection-end-column="52" />
+              <caret line="269" column="52" selection-start-line="269" selection-start-column="52" selection-end-line="269" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -176,7 +176,6 @@
         <option value="$PROJECT_DIR$/dynamic.py" />
         <option value="$PROJECT_DIR$/updated/animation_v2.py" />
         <option value="$PROJECT_DIR$/updated/dynamics_v2.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/optimization_traj.py" />
         <option value="$PROJECT_DIR$/utility.py" />
         <option value="$PROJECT_DIR$/traj.py" />
@@ -188,6 +187,7 @@
         <option value="$PROJECT_DIR$/modified_50pts_1s.py" />
         <option value="$PROJECT_DIR$/animation.py" />
         <option value="$PROJECT_DIR$/time_50pts.py" />
+        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/direct_collocation_modified.py" />
       </list>
     </option>
@@ -249,27 +249,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.direct_collocation_modified">
-    <configuration name="direct_collocation_inverse" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Adaptive_Hooker" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/direct_collocation_inverse.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="direct_collocation_modified" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Adaptive_Hooker" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -304,6 +283,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/modified_50pts_1s.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Adaptive_Hooker" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -356,18 +356,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.direct_collocation_modified" />
-      <item itemvalue="Python.direct_collocation_inverse" />
       <item itemvalue="Python.modified_50pts_1s" />
       <item itemvalue="Python.time_50pts" />
       <item itemvalue="Python.traj" />
+      <item itemvalue="Python.test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.direct_collocation_modified" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.time_50pts" />
         <item itemvalue="Python.traj" />
         <item itemvalue="Python.modified_50pts_1s" />
-        <item itemvalue="Python.direct_collocation_inverse" />
       </list>
     </recent_temporary>
   </component>
@@ -410,13 +410,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="24" width="1680" height="1027" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20735383" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20735383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4996986" visible="true" weight="0.31764707" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4996986" visible="true" weight="0.31764707" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -579,13 +580,6 @@
     <entry file="file://$PROJECT_DIR$/Input_Trajectory.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/optimization_traj.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8985">
@@ -642,21 +636,28 @@
     <entry file="file://$PROJECT_DIR$/time_50pts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="834">
-          <caret line="269" column="52" lean-forward="true" selection-start-line="269" selection-start-column="52" selection-end-line="269" selection-end-column="52" />
+          <caret line="269" column="52" selection-start-line="269" selection-start-column="52" selection-end-line="269" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-894">
+          <caret line="22" column="73" selection-start-line="22" selection-start-column="73" selection-end-line="22" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/animation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1929">
+        <state relative-caret-position="1178">
           <caret line="154" column="92" selection-start-line="154" selection-start-column="92" selection-end-line="154" selection-end-column="92" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/direct_collocation_modified.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        <state relative-caret-position="240">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
