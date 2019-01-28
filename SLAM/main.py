@@ -16,13 +16,13 @@ def main():
     np.random.seed()
 
     # covariance matrix for motion
-    R = np.eye(3)
-    R[2][2] = 0.1
+    R = 1*np.eye(3)
+    R[2][2] = 0
 
     # covariance matrix for measurements
     Q = 3*np.eye(3)
     Q[1][1] = 0.5
-    Q[2][2] = 0
+    Q[2][2] = 0.1
     # R = np.zeros((3, 3))
     # Q = np.zeros((3, 3))
 
@@ -31,7 +31,7 @@ def main():
 
     # Initial Guess of Posteriori Covariance Matrix
     P0 = np.eye(3)
-    P0[2][2] = 0.1
+    P0[2][2] = 0.
     T = 10
     u = [(50, .5) for _ in range(T)]
 
@@ -43,7 +43,7 @@ def main():
     robot = Robot(u, Q, R, x0, P0, env, img_sav_dir)
     robot.execute()
     robot.visualize(exe=True)
-    robot.em_slam()
+    robot.em_slam(max_iters=30, plot=False)
     plt.show()
 
     # generate gif

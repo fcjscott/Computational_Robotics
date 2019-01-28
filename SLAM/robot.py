@@ -267,21 +267,33 @@ class Robot(object):
             for t in range(self.T):
 
                 # x, P = log_smooth[-t - 1]
+
+                # comment out to debug for M step
                 x, P = self.e_step_res['filter'][t]
-                y = self.log['obs']
+                y = self.log['obs'][t]
                 yt_ = self.h(x, theta_, False)
 
+                # Debugging code for M step
+                #x = self.log['traj'][t+1]
+                #P = np.ones(shape=(3,3))*0.0
+                #y = self.log['obs'][t]
+                #yt_ = self.h(x, theta_, False)
+
                 for i in range(N):
-                    ob = y[t][i]
+                    ob = y[i]
                     ob_ = yt_[i]
-                    innov = (ob - ob_).reshape(3, 1)
+
+                    innov = (ob - ob_).reshape(3,1)
+
 
                     Q_inv = np.linalg.pinv(self.Q)
+                    R_inv = np.linalg.pinv(self.R)
+
                     H = self.jacobian_H(x, theta_[i])
 
                     res += innov.T @ Q_inv @ innov
-                    res += np.trace(Q_inv @ H @ P @ H.T)
-
+                    #res += innov
+                    res += np.trace(R_inv @ H @ P @ H.T)
             return res
 
         return Q_func
@@ -290,7 +302,6 @@ class Robot(object):
         '''
         Return: theta_k+1
         '''
-
         # theta0 = self.theta0.reshape(self.n_lm * 3, )
         # print(theta0)
         # theta_init = np.delete(theta0, [i for i in range(2, len(theta0), 3)])
@@ -307,7 +318,7 @@ class Robot(object):
 
         return np.hstack((res['x'].reshape(N, 2), np.array(range(1, N + 1)).reshape(N, 1)))
 
-    def em_slam(self, max_iters=100):
+    def em_slam(self, max_iters=100, plot=False):
 
         y, u = self.log['obs'], self.u
         Q, R = self.Q, self.R
@@ -316,8 +327,12 @@ class Robot(object):
         theta_true = self.env.theta
 
         # Debugging theta old
-        theta_old = copy.deepcopy(theta_true)
-        # theta_old = self.theta
+        #print(theta_true)
+        #theta_old = copy.deepcopy(theta_true)
+        #print(theta_old)
+        #self.theta = copy.deepcopy(theta_true)
+
+        theta_old = self.theta
 
         res = {}
         errors = []
@@ -338,12 +353,18 @@ class Robot(object):
             self.visualize(exe=True, em=True)
 
             # break out check
-            # if i > 5 and diff > errors[-2]:
-            # break
+            #if i > 5 and diff > errors[-2]:
+            #   break
 
-            if np.allclose(theta_old, theta_new, atol=10 ** -2):
+            if np.allclose(theta_old, theta_new, atol=10**-2):
                 break
             else:
                 theta_old = theta_new
 
         self.theta = theta_new
+
+        if plot:
+            plt.figure('error plot')
+            plt.plot(errors)
+            plt.xlabel('iterations')
+            plt.ylabel('RSS error of map')
